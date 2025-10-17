@@ -1,0 +1,44 @@
+if SHIELD_PEKS48_R
+
+config ZMK_KEYBOARD_NAME
+    default "peks48"
+
+config ZMK_BLE
+    default y
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif
+
+
+if SHIELD_PEKS48_R || SHIELD_PEKS48_L
+
+config NFCT_PINS_AS_GPIOS
+    default n
+
+config ZMK_SPLIT
+    default y
+
+config INPUT
+    default y
+
+config ZMK_POINTING
+    default n
+
+config SPI
+    default n
+
+config PMW3610
+    default n
+
+config PMW3610_SWAP_XY
+    default n
+
+config RGBLED_WIDGET_BATTERY_LEVEL_HIGH
+    default 30
+
+config RGBLED_WIDGET_BATTERY_LEVEL_CRITICAL
+    default 10
+
+endif

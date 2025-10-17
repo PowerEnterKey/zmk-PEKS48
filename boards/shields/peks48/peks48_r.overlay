@@ -1,0 +1,8 @@
+#include "peks48.dtsi"
+#include <input/processors.dtsi>
+
+&default_transform {
+    col-offset = <6>;
+};
+
+&xiao_serial { status = "disabled"; };

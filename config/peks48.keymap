@@ -1,0 +1,107 @@
+#include <input/processors.dtsi>
+#include <dt-bindings/zmk/input_transform.h>
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/pointing.h>
+
+// Conversion definition for using Japanese keyboard with OS settings
+#define JP_DQUOTE       AT                // "
+#define JP_AMPERSAND    CARET             // &
+#define JP_QUOTE        AMPERSAND         // '
+#define JP_EQUAL        UNDER             // =
+#define JP_CARET        EQUAL             // ^
+#define JP_YEN          0x89              // ¥
+#define JP_PLUS         COLON             // +
+#define JP_TILDE        PLUS              // ~
+#define JP_PIPE         LS(0x89)          // |
+#define JP_AT           LEFT_BRACKET      // @
+#define JP_COLON        SINGLE_QUOTE      // :
+#define JP_ASTERISK     DOUBLE_QUOTES     // *
+#define JP_BACKQUOTE    LEFT_BRACE        // `
+#define JP_UNDERSCORE   LS(0x87)          // _
+#define JP_LBRACKET     RIGHT_BRACKET     // [
+#define JP_RBRACKET     BACKSLASH         // ]
+#define JP_LPAREN       ASTERISK          // (
+#define JP_RPAREN       LEFT_PARENTHESIS  // )
+#define JP_LBRACE       RIGHT_BRACE       // {
+#define JP_RBRACE       PIPE              // }
+#define JP_KANA         LANGUAGE_1        // かな
+#define JP_EISU         LANGUAGE_2        // 英数
+#define JP_HANZEN       GRAVE             // 半角/全角
+
+&mt {
+    flavor = "balanced";
+    quick-tap-ms = <0>;
+};
+
+/ {
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <
+&kp TAB     &kp Q      &kp W     &kp E     &kp R             &kp T               &kp Y            &kp U        &kp I        &kp O           &kp P           &kp DELETE
+&kp LCTRL   &kp A      &kp S     &kp D     &kp F             &kp G               &kp H            &kp J        &kp K        &kp L           &kp SEMICOLON   &kp MINUS
+&kp LSHIFT  &kp Z      &kp X     &kp C     &kp V             &kp B               &kp N            &kp M        &kp COMMA    &kp DOT         &kp UP_ARROW    &kp SLASH
+&kp ESC     &kp LCTRL  &kp LWIN  &kp LALT  &mt LSHIFT SPACE  &lt 1 JP_HANZEN    &lt 2 BACKSPACE  &lt 3 ENTER  &kp JP_QUOTE &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW 
+            >;
+        };
+
+        layer_1 {
+            bindings = <
+&trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3     &kp NUMBER_4     &kp NUMBER_5    &kp NUMBER_6  &kp NUMBER_7   &kp NUMBER_8   &kp NUMBER_9  &kp NUMBER_0   &trans
+&trans  &trans        &trans        &kp JP_LBRACKET  &kp JP_RBRACKET  &trans          &trans        &kp JP_LPAREN  &kp JP_RPAREN  &trans        &kp JP_COLON   &kp JP_UNDERSCORE
+&trans  &trans        &trans        &trans           &trans           &trans          &trans        &trans         &trans         &trans        &kp PIPE       &trans
+&trans  &trans        &trans        &trans           &trans           &trans          &trans        &trans         &kp JP_DQUOTE  &trans        &trans         &trans
+            >;
+        };
+
+        layer_2 {
+            bindings = <
+&trans  &kp EXCLAMATION  &kp JP_AT  &kp POUND  &kp DOLLAR  &kp PERCENT     &kp JP_CARET  &kp JP_AMPERSAND   &kp JP_ASTERISK   &kp MINUS    &kp UNDERSCORE   &trans
+&trans  &kp GRAVE        &kp TILDE  &trans     &trans      &kp C_VOL_UP    &kp C_VOL_DN  &kp DOUBLE_QUOTES  &kp SINGLE_QUOTE  &kp JP_PLUS  &kp JP_ASTERISK  &trans
+&trans  &trans           &trans     &trans     &trans      &trans          &trans        &trans             &trans            &trans       &trans           &trans
+&trans  &trans           &trans     &trans     &trans      &trans          &trans        &trans             &trans            &trans       &trans           &trans
+            >;
+        };
+
+        layer_3 {
+            bindings = <
+&trans        &kp F1        &kp F2        &kp F3        &kp F4        &kp F5    &kp F6  &kp F7          &kp F8          &kp F9           &kp F10  &kp F11
+&trans        &trans        &trans        &trans        &trans        &trans    &trans  &kp LEFT_ARROW  &kp UP_ARROW    &kp RIGHT_ARROW  &trans   &kp F12
+&trans        &trans        &trans        &trans        &trans        &trans    &trans  &trans          &kp DOWN_ARROW  &trans           &trans   &trans
+&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans    &trans  &trans          &trans          &trans           &trans   &kp LA(F4)
+            >;
+        };
+
+        layer_4 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+&trans  &trans  &trans  &trans  &trans  &trans    &trans       &tog 6        &trans        &trans        &trans        &bt BT_CLR
+&trans  &trans  &trans  &trans  &trans  &trans    &bootloader  &trans        &trans        &trans        &trans        &bt BT_CLR_ALL
+                                &trans  &trans    &trans       &trans
+            >;
+        };
+
+        layer_5 {
+            bindings = <
+&trans  &trans  &trans    &trans    &trans    &trans    &trans  &trans    &trans    &trans    &trans  &trans
+&trans  &trans  &mkp MB3  &mkp MB2  &mkp MB1  &trans    &trans  &mkp MB1  &mkp MB2  &mkp MB3  &trans  &trans
+&trans  &trans  &trans    &trans    &trans    &trans    &trans  &trans    &trans    &trans    &trans  &trans
+                                    &trans    &trans    &trans  &trans
+            >;
+        };
+
+        layer_6 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans    &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans    &trans    &trans    &trans
+                                &trans  &trans    &trans  &trans
+            >;
+        };
+    };
+};

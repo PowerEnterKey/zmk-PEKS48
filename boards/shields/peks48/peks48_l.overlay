@@ -1,0 +1,3 @@
+#include "peks48.dtsi"
+
+&xiao_serial { status = "disabled"; };
