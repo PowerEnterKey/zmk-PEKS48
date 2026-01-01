@@ -46,7 +46,7 @@
 &kp TAB     &kp Q      &kp W     &kp E     &kp R             &kp T               &kp Y            &kp U        &kp I        &kp O           &kp P           &kp DELETE
 &kp LCTRL   &kp A      &kp S     &kp D     &kp F             &kp G               &kp H            &kp J        &kp K        &kp L           &kp SEMICOLON   &kp MINUS
 &kp LSHIFT  &kp Z      &kp X     &kp C     &kp V             &kp B               &kp N            &kp M        &kp COMMA    &kp DOT         &kp UP_ARROW    &kp SLASH
-&kp ESC     &kp LCTRL  &kp LWIN  &kp LALT  &mt LSHIFT SPACE  &lt 1 JP_HANZEN    &lt 2 BACKSPACE  &lt 3 ENTER  &kp JP_QUOTE &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW 
+&kp ESC     &kp LCTRL  &kp LWIN  &kp LALT  &mt LSHIFT SPACE  &lt 1 JP_HANZEN     &lt 2 BACKSPACE  &lt 3 ENTER  &kp JP_QUOTE &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW 
             >;
         };
 
@@ -70,10 +70,10 @@
 
         layer_3 {
             bindings = <
-&trans        &kp F1        &kp F2        &kp F3        &kp F4        &kp F5    &kp F6  &kp F7          &kp F8          &kp F9           &kp F10  &kp F11
-&trans        &trans        &trans        &trans        &trans        &trans    &trans  &kp LEFT_ARROW  &kp UP_ARROW    &kp RIGHT_ARROW  &trans   &kp F12
-&trans        &trans        &trans        &trans        &trans        &trans    &trans  &trans          &kp DOWN_ARROW  &trans           &trans   &trans
-&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans    &trans  &trans          &trans          &trans           &trans   &kp LA(F4)
+&trans          &kp F1        &kp F2        &kp F3        &kp F4        &kp F5    &kp F6  &kp F7          &kp F8          &kp F9           &kp F10  &kp F11
+&trans          &trans        &trans        &trans        &trans        &trans    &trans  &kp LEFT_ARROW  &kp UP_ARROW    &kp RIGHT_ARROW  &trans   &kp F12
+&bt BT_CLR_ALL  &trans        &trans        &trans        &trans        &trans    &trans  &trans          &kp DOWN_ARROW  &trans           &trans   &trans
+&bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans    &trans  &trans          &trans          &trans           &trans   &kp LA(F4)
             >;
         };
 
